@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sogradb?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1234
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: false
+        show-sql: true
+
+  # ?? ?? ??
+  logging:
+    level:
+      # hibernate ? ??? ?? ??? debug??? ??
+      # jpa hibernate? ???? sql? ??? ??? ???? ?? ??
+      org.hibernate.SQL: debug
+      org.hibernate.type: trace # ?? ???? ????? ???? ??
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
