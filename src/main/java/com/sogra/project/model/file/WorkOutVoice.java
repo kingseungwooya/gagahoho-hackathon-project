@@ -1,4 +1,4 @@
-package com.sogra.project.model;
+package com.sogra.project.model.file;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,17 +7,20 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
-@Table(name = "files")
-public class FileDB {
+@Table(name = "work_audio")
+@NoArgsConstructor
+public class WorkOutVoice {
+
     @Id
-    @Column(name = "file_id")
+    @Column(name = "work_audio_id")
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    private String workAudioId;
 
     private String name;
 
@@ -26,17 +29,15 @@ public class FileDB {
     @Lob
     private byte[] data;
 
-    public FileDB() {
-    }
-
-    public FileDB(String name, String type, byte[] data) {
+    @Builder
+    public WorkOutVoice(String name, String type, byte[] data) {
         this.name = name;
         this.type = type;
         this.data = data;
     }
 
-    public String getId() {
-        return id;
+    public String getWorkAudioId() {
+        return workAudioId;
     }
 
     public String getName() {

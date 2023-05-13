@@ -9,10 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @NoArgsConstructor
+@Getter
 public class Day {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +24,9 @@ public class Day {
     @Enumerated(EnumType.STRING)
     private DayOfWeek dayOfWeek;
 
-    private LocalTime time;
-
     @Builder
-    public Day(Long id, DayOfWeek dayOfWeek, LocalTime time) {
+    public Day(Long id, DayOfWeek dayOfWeek) {
         this.id = id;
         this.dayOfWeek = dayOfWeek;
-        this.time = time;
     }
 }
